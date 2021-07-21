@@ -1,5 +1,6 @@
 const defaultResult = 0;
 let currentResult = defaultResult;
+let logEntries = [];
 
 // Gets input from input field
 function getUserNumberInput() {
@@ -16,9 +17,12 @@ function add() { // curly braces named function body
     const enteredNumber = getUserNumberInput();
     const initalResult = currentResult;
     currentResult += enteredNumber;
+    //currentResult = currentResult + 1; // or curentResult++;
     createAndWriteOutput('+', initalResult, enteredNumber);
     //alert('The result is' + result); // built-in functions
     // return result; //returns the value that's stored in result as a result of this function call
+    logEntries.push(enteredNumber);
+    console.log(logEntries[1]);
 }
 
 /* currentResult= add(1, 2);
