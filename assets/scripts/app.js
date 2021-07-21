@@ -1,10 +1,12 @@
 const defaultResult = 0;
 let currentResult = defaultResult;
 
+// Gets input from input field
 function getUserNumberInput() {
     return parseInt(userInput.value);
 }
 
+// Generates and writes calculation log
 function createAndWriteOutput(operator, resultBeforeCalc, calcNumber) {
     const calcDescription = `${resultBeforeCalc} ${operator} ${calcNumber}`;
     outputResult(currentResult, calcDescription);
@@ -13,35 +15,36 @@ function createAndWriteOutput(operator, resultBeforeCalc, calcNumber) {
 function add() { // curly braces named function body
     const enteredNumber = getUserNumberInput();
     const initalResult = currentResult;
-    currentResult = currentResult + enteredNumber;
+    currentResult += enteredNumber;
     createAndWriteOutput('+', initalResult, enteredNumber);
     //alert('The result is' + result); // built-in functions
     // return result; //returns the value that's stored in result as a result of this function call
 }
 
-// currentResult= add(1, 2);
+/* currentResult= add(1, 2);
 // //add(5, 5); //This line executes and calls the function, it runs that function
-// currentResult = (currentResult + 10) * 3 / 2 - 1 ;
+currentResult = (currentResult + 10) * 3 / 2 - 1 ;
+ a longer comment across multiple lines */
 
 
 function subtract() {
     const enteredNumber = getUserNumberInput();
     const initalResult = currentResult;
-    currentResult = currentResult - enteredNumber;
+    currentResult -= enteredNumber;
     createAndWriteOutput('-', initalResult, enteredNumber);
 }
 
 function multiply() {
     const enteredNumber = getUserNumberInput();
     const initalResult = currentResult;
-    currentResult = currentResult * enteredNumber;
+    currentResult *= enteredNumber;
     createAndWriteOutput('*', initalResult, enteredNumber);
 }
 
 function divide() {
     const enteredNumber = getUserNumberInput();
     const initalResult = currentResult;
-    currentResult = currentResult / enteredNumber;
+    currentResult /= enteredNumber;
     createAndWriteOutput('/', initalResult, enteredNumber);
 }
 
