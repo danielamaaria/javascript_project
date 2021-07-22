@@ -13,6 +13,23 @@ function createAndWriteOutput(operator, resultBeforeCalc, calcNumber) {
     outputResult(currentResult, calcDescription);
 }
 
+function writeToLog(
+     operationIdentifier,
+     prevResult,
+     operationNumber,
+     newResult
+     ) {
+        const logEntry = {
+            operation: operationIdentifier,
+            prevResult: prevResult,
+            number: operationNumber,
+            result: newResult
+        };
+        logEntries.push(logEntry);
+        console.log(logEntry.operation);
+        console.log(logEntries);
+     }
+
 function add() { // curly braces named function body
     const enteredNumber = getUserNumberInput();
     const initalResult = currentResult;
@@ -21,8 +38,7 @@ function add() { // curly braces named function body
     createAndWriteOutput('+', initalResult, enteredNumber);
     //alert('The result is' + result); // built-in functions
     // return result; //returns the value that's stored in result as a result of this function call
-    logEntries.push(enteredNumber);
-    console.log(logEntries[1]);
+   writeToLog('ADD', initalResult, enteredNumber, currentResult);
 }
 
 /* currentResult= add(1, 2);
@@ -36,6 +52,7 @@ function subtract() {
     const initalResult = currentResult;
     currentResult -= enteredNumber;
     createAndWriteOutput('-', initalResult, enteredNumber);
+    writeToLog('SUBTRACT', initalResult, enteredNumber, currentResult);
 }
 
 function multiply() {
@@ -43,6 +60,7 @@ function multiply() {
     const initalResult = currentResult;
     currentResult *= enteredNumber;
     createAndWriteOutput('*', initalResult, enteredNumber);
+    writeToLog('MULTIPLY', initalResult, enteredNumber, currentResult);
 }
 
 function divide() {
@@ -50,6 +68,7 @@ function divide() {
     const initalResult = currentResult;
     currentResult /= enteredNumber;
     createAndWriteOutput('/', initalResult, enteredNumber);
+    writeToLog('DIVIDE', initalResult, enteredNumber, currentResult);
 }
 
 addBtn.addEventListener('click', add); //Meaning: "Hey, when the button is clicked, go ahead and execute add.".
