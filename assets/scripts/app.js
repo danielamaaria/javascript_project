@@ -1,6 +1,6 @@
-const defaultResult = 0;
-let currentResult = defaultResult;
-let logEntries = [];
+var defaultResult = 0;
+var currentResult = defaultResult;
+var logEntries = [];
 
 // Gets input from input field
 function getUserNumberInput() {
@@ -30,15 +30,24 @@ function writeToLog(
         console.log(logEntries);
      }
 
+     function calculateResult(calculationType) {
+        const enteredNumber = getUserNumberInput();
+        const initalResult = currentResult;
+        let mathoperator;
+        if (calculationType === 'ADD') {
+            currentResult += enteredNumber;
+            mathoperator = '+';
+        }  else {
+            currentResult -= enteredNumber;
+            mathoperator = '-';
+        }
+
+        createAndWriteOutput(mathoperator, initalResult, enteredNumber);
+       writeToLog(calculationType, initalResult, enteredNumber, currentResult);
+     }
+
 function add() { // curly braces named function body
-    const enteredNumber = getUserNumberInput();
-    const initalResult = currentResult;
-    currentResult += enteredNumber;
-    //currentResult = currentResult + 1; // or curentResult++;
-    createAndWriteOutput('+', initalResult, enteredNumber);
-    //alert('The result is' + result); // built-in functions
-    // return result; //returns the value that's stored in result as a result of this function call
-   writeToLog('ADD', initalResult, enteredNumber, currentResult);
+   calculateResult('ADD');
 }
 
 /* currentResult= add(1, 2);
@@ -46,13 +55,8 @@ function add() { // curly braces named function body
 currentResult = (currentResult + 10) * 3 / 2 - 1 ;
  a longer comment across multiple lines */
 
-
 function subtract() {
-    const enteredNumber = getUserNumberInput();
-    const initalResult = currentResult;
-    currentResult -= enteredNumber;
-    createAndWriteOutput('-', initalResult, enteredNumber);
-    writeToLog('SUBTRACT', initalResult, enteredNumber, currentResult);
+   calculateResult = 'SUBTRACT';
 }
 
 function multiply() {
