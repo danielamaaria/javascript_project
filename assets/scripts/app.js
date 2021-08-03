@@ -37,9 +37,15 @@ function writeToLog(
         if (calculationType === 'ADD') {
             currentResult += enteredNumber;
             mathoperator = '+';
-        }  else {
+        }  else if (calculationType === 'SUBTRACT') {
             currentResult -= enteredNumber;
             mathoperator = '-';
+        } else if (calculationType === 'MULTIPLY') {
+            currentResult *= enteredNumber;
+            mathoperator = '*';
+        } else if (calculationType === 'DIVIDE') {
+            currentResult /= enteredNumber;
+            mathoperator = '/';
         }
 
         createAndWriteOutput(mathoperator, initalResult, enteredNumber);
@@ -56,23 +62,15 @@ currentResult = (currentResult + 10) * 3 / 2 - 1 ;
  a longer comment across multiple lines */
 
 function subtract() {
-   calculateResult = 'SUBTRACT';
+   calculateResult('SUBTRACT');
 }
 
 function multiply() {
-    const enteredNumber = getUserNumberInput();
-    const initalResult = currentResult;
-    currentResult *= enteredNumber;
-    createAndWriteOutput('*', initalResult, enteredNumber);
-    writeToLog('MULTIPLY', initalResult, enteredNumber, currentResult);
+   calculateResult('MULTIPLY');
 }
 
 function divide() {
-    const enteredNumber = getUserNumberInput();
-    const initalResult = currentResult;
-    currentResult /= enteredNumber;
-    createAndWriteOutput('/', initalResult, enteredNumber);
-    writeToLog('DIVIDE', initalResult, enteredNumber, currentResult);
+   calculateResult('DIVIDE');
 }
 
 addBtn.addEventListener('click', add); //Meaning: "Hey, when the button is clicked, go ahead and execute add.".
